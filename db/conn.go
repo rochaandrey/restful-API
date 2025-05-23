@@ -3,6 +3,8 @@ package db
 import (
 	"database/sql"
 	"fmt"
+
+	_ "github.com/lib/pq"
 )
 
 const (
@@ -15,7 +17,7 @@ const (
 
 func ConnectDB() (*sql.DB, error) {
 	//def strings de conexão
-	psqlInfo := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sllmode=disable", host, port, user, password, dbname)
+	psqlInfo := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=disable", host, port, user, password, dbname)
 
 	//abrindo a conexão com o postgresql
 	db, err := sql.Open("postgres", psqlInfo)

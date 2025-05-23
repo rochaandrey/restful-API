@@ -11,14 +11,15 @@ type ProductRepository struct {
 	connection *sql.DB
 }
 
-func newProductRepository(connection *sql.DB) ProductRepository {
+func NewProductRepository(connection *sql.DB) ProductRepository {
 	return ProductRepository{
 		connection: connection,
 	}
 }
 
 func (pr *ProductRepository) GetProducts() ([]model.Product, error) {
-	query := "select * from product p"
+	query := "SELECT id, product_name, price FROM product"
+
 	rows, err := pr.connection.Query(query)
 
 	if err != nil {
