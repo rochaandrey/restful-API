@@ -17,7 +17,7 @@ func newProductRepository(connection *sql.DB) ProductRepository {
 	}
 }
 
-func (pr *ProductRepository) GetProducts([]model.Product, error) {
+func (pr *ProductRepository) GetProducts() ([]model.Product, error) {
 	query := "select * from product p"
 	rows, err := pr.connection.Query(query)
 
